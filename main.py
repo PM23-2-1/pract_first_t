@@ -46,7 +46,7 @@ def main():
     while run:
         run = universal.uni(commands, 
                       dist_1, minmax,
-                      db.print_db, db.save_db_to_xlxs, exel.print_exel)
+                      db.save_db_to_xlxs)
     return
 
 if __name__ == '__main__':
