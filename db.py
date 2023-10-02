@@ -39,6 +39,8 @@ def save_result(operation, result):
                                 cursorclass=pymysql.cursors.DictCursor)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO " + DB_Names.db_names.get_name_table() + f" (operat, result) VALUES (%s, %s)", (operation, str(result)))
+        new_df = pd.read_sql("SELECT * FROM " + DB_Names.db_names.get_name_table() + " ORDER BY id DESC LIMIT 1", conn)
+        print(new_df)
         conn.commit()
     except pymysql.err.DataError as e:
         print('Ошибка с данными:', e)

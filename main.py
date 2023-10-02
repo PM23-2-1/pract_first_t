@@ -23,13 +23,24 @@ def dist_1():
         print('Ошибка')
     return
 
+def sets_and_dict():
+    dicts = {k:v for k, v in zip(range(10), range(10))}
+    seti = {v for v in range(10)}
+    seti.add(11)
+    seti.add(12)
+    seti.add(13)
+    print(seti)
+    seti.remove(3)
+    db.save_result('set', seti)
+    db.save_result('dict', dicts.values())
+
 # input lits of num -> min and max values of list
 def minmax():
     list_1 = input('List: ').split()
     try: 
         list_1 = list(map(int, list_1))
         print(max(list_1), min(list_1))
-        db.save_result('min, max', str(max(list_1)) + ' ' + str(min(list_1)) )
+        db.save_result('max, min', str(max(list_1)) + ' ' + str(min(list_1)) )
     except BaseException:
         print('Ошибка')
     return
@@ -45,8 +56,7 @@ def main():
 4. Завершить"""
     while run:
         run = universal.uni(commands, 
-                      dist_1, minmax,
-                      db.save_db_to_xlxs)
+                      dist_1, sets_and_dict, minmax)
     return
 
 if __name__ == '__main__':
